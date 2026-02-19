@@ -17,8 +17,16 @@ bool add_student(roster_t *r, const char *name, uint8_t grade) {
 }
 
 roster_t get_grade(roster_t *r, const uint8_t desired_grade){
-    r->count = (desired_grade == 3) ? 0 : 10;
-    return (roster_t)NON_EMPTY_DUMMY_ROSTER;
+    roster_t desired_roster_t;
+    init_roster(&desired_roster_t);
+    for (size_t i = 0; i < r->count; i++)
+    {
+        if (r->students[i].grade == desired_grade)
+        {
+            add_student(&desired_roster_t, r->students[i].name, desired_grade);
+        }
+    }
+    return desired_roster_t;
 }
 
 
