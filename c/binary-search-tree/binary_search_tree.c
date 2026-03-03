@@ -12,6 +12,19 @@ static node_t *make_node(int value) {
     printf("nt->left: %d, nt->left->data = %d\n", n->left == NULL, (n->left == NULL) ? 0 : n->left->data);
     return n;
 }
+static void inOrder(node_t *root, int *sorted_data)
+{
+    if (root != NULL)
+    {   
+        inOrder(root->left, sorted_data);
+        printf("counter = %d\n", counter);
+        printf(" root->data = %d\n", root->data);
+        sorted_data[counter] = root->data;
+        printf(" sorted_data[%d] = %d\n", counter, sorted_data[counter]);
+        counter++;
+        inOrder(root->right, sorted_data);
+    }
+}
 
 static node_t *create_tree(node_t *root, int value) {
     if (root == NULL) {
@@ -46,5 +59,8 @@ void free_tree(node_t *tree) {
 }
 int *sorted_data(node_t *tree) {
     if (tree == NULL) return 0;
-    return &(tree->data);
+    int *sorted_data = malloc(sizeof(node_t));
+    counter = 0;
+    inOrder(tree, sorted_data);
+    return sorted_data;
 }

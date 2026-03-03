@@ -3,9 +3,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h> 
-
+int counter;
 typedef struct node node_t;
-
 struct node {
    node_t *right;
    node_t *left;
