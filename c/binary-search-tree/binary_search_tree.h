@@ -3,7 +3,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h> 
-int counter;
 typedef struct node node_t;
 struct node {
    node_t *right;
@@ -14,5 +13,7 @@ struct node {
 node_t *build_tree(int *tree_data, size_t tree_data_len);
 void free_tree(node_t *tree);
 int *sorted_data(node_t *tree);
+int min(node_t *tree);
+int max(node_t *tree);
 
 #endif
